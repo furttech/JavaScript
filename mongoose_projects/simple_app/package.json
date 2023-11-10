@@ -1,0 +1,15 @@
+{
+  "name": "simple_app",
+  "version": "1.0.0",
+  "description": "a basic mongoose application",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "furttech",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^8.0.0"
+  }
+}
