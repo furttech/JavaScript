@@ -2,6 +2,18 @@
 
 This project explores the use of basic authentication on a mongodb database server.
 
+
+## Start the server with no authentication
+
+```bash
+// start a clear open server
+mongod 
+
+// (optionally) specify db file or port
+mongod --port 27017 --dbpath /var/lib/mongodb
+```
+
+
 ## Configure the Database
 
 **The userAdminAnyDatabase role allows this user to:**
@@ -32,6 +44,13 @@ db.createUser(
 db.adminCommand( { shutdown: 1 } )
 
 ```
+## Restart the Server this time WITH config file path.
+
+```bash
+ // Start server using file string
+ mongod -f "C:\Program Files\MongoDB\Server\7.0\bin\mongod.cfg"
+```
+
 ## Connect as __New__ Authenticated User
 
 Authentication is performed Two Ways
@@ -42,7 +61,7 @@ Authentication is performed Two Ways
   * The username and password is passed within a database query
 
 ```bash
- // startup script
+ // connection script using mongosh
  mongosh --port 27017  --authenticationDatabase "admin" -u "myUserAdmin" -p
 ```
 
