@@ -25,4 +25,3 @@ console.log(`Authorization user added successfully!`);
 // Remove a User (authentication is required)
 // Be Aware Lockout is Possible on non local hosts 
 //db.dropUser("mongoTestAdmin");
-
