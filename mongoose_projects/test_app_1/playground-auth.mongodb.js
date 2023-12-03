@@ -19,8 +19,18 @@ console.log(`Authorization user added successfully!`);
 */
 
 // Authenticate as newly created admin user
-//use('admin');
-//db.auth("mongoTestAdmin", "test-mongo-database");
+use('admin');
+db.auth("mongoTestAdmin", "test-mongo-database");
+
+use('blog');
+
+use('posts');
+
+//db.users.find({});
+db.roles.find({});
+
+
+
 
 // Remove a User (authentication is required)
 // Be Aware Lockout is Possible on non local hosts 

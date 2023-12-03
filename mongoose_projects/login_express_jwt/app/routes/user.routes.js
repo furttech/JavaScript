@@ -1,7 +1,7 @@
-const { authJwt } = require("../middleware");
+const auth = require("../middleware");
 const controller = require("../controllers/user.controller");
 
-module.exports = function(){
+module.exports = function(app){
 
     // set response header values
     app.use(function(req, res, next){
@@ -13,14 +13,14 @@ module.exports = function(){
     });
 
     // api fetch for Public access
-    app.get("api/test/all", controller.allAccess);
+    app.get("/api/test/all",[controller.allAccess]);
 
     // api fetch for User Content
-    app.get("api/test/user", [authJwt.verifyToken], controller.userBoard);
+    app.get("/api/test/user",[auth.authJwt.verifyToken, controller.userBoard]);
 
     // api fetch for moderator content
-    app.get("/api/test/mod", [authJwt.verifyToken, authJwt.isModerator], controller.moderatorBoard);
+    app.get("/api/test/mod",[auth.authJwt.verifyToken, auth.authJwt.isModerator, controller.moderatorBoard ]);
 
-    // api fetch for admin pannel
-    app.get("/api/test/admin", [authJwt.verifyToken, authJwt.isAdmin], controller.adminBoard);
-};
+    // api fetch for admin panel
+    app.get("/api/test/admin",[auth.authJwt.verifyToken, auth.authJwt.isAdmin, controller.adminBoard]);
+}

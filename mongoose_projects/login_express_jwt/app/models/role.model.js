@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 
 const Role = mongoose.model(
-    "Role",
+    // ModelName
+    'Role',
+    // Schema Definition
     new mongoose.Schema({
         name: String
-    })
+    },{ timestamps: { createdAt: 'created_at' } })
 )
 
-module.export = Role;
+module.exports = Role;

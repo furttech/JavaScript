@@ -1,5 +1,16 @@
+// import and configure .env file
+const dotenv = require("dotenv");
+dotenv.config({ path : "./config.env"});
+
+const user = process.env.USER || "";
+const pass = process.env.PASS || "";
+const uri = process.env.URI || "";
+const port = process.env.APPPORT || "";
+
+
 module.exports = {
-    HOST: "0.0.0.0",
-    PORT: 27017,
-    DB: "blog"
+    LOGIN : user,
+    PASS : pass,
+    URI : uri,
+    PORT : port,
 };

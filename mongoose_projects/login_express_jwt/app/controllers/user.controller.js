@@ -1,8 +1,9 @@
-exports.allAccess = (req, res) => {
-    res.status(200).send("Public Access)");
+exports.allAccess = (req, res, next) => {
+    console.log("Route Accessed :: ALL");
+    res.status(200).send("Public Access");
 };
 
-exports.userBoard = (req, res) => {
+exports.userBoard = (req, res, next) => {
     res.status(200).send("Access Granted : User Content");
 };
 
