@@ -26,8 +26,13 @@ use('blog');
 
 use('posts');
 
-//db.users.find({});
-db.roles.find({});
+db.users.findOneAndDelete({"username":"furt"});
+db.users.findOneAndDelete({"username":"furtmail"});
+db.users.findOneAndDelete({"username":"furtrole2"});
+
+db.users.find({});
+//db.roles.find({});
+
 
 
 

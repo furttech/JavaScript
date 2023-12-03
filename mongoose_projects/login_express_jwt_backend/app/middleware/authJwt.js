@@ -21,6 +21,11 @@ verifyToken = (req, res, next) => {
 };
 
 isAdmin = (req, res, next) => {
+  
+  
+  
+  
+  
   User.findById(req.userID).exec((err, user) => {
     if(err){
       res.status(500).send({message: err});
