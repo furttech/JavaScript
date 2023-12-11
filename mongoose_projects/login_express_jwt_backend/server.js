@@ -56,11 +56,6 @@ require('./app/routes/auth.routes')(app);
 // routes for user domains
 require('./app/routes/user.routes')(app);
 
-// simple route for root zone
-app.get("/", function(req, res) {
-  return res.json({message: "Welcome to the Show!"});
-});
-
 ///////////* Enable APP and Listen */////////////
 
 // set port, start listing for front end requests

@@ -4,13 +4,16 @@ exports.allAccess = (req, res, next) => {
 };
 
 exports.userBoard = (req, res, next) => {
+    console.log("Route Accessed :: USER");
     res.status(200).send("Access Granted : User Content");
 };
 
-exports.adminBoard = (req, res) => {
+exports.adminBoard = (req, res, next) => {
+    console.log("Route Accessed :: ADMIN");
     res.status(200).send("Access Granted : Administration");
 };
 
-exports.moderatorBoard = (req, res) => {
+exports.moderatorBoard = (req, res, next) => {
+    console.log("Route Accessed :: MOD");
     res.status(200).send("Access Granted : Moderator");
 };
