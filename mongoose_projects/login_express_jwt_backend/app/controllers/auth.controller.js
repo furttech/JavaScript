@@ -10,9 +10,9 @@ let bcrypt = require("bcryptjs");
 
 exports.signup = async (req, res) => {
   const user = new User({
-    username: req.body.username,
+    username: req.body.user,
     email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 8)
+    password: bcrypt.hashSync(req.body.pass, 8)
   });
 
   // save user data using POST request data fields stored in user
@@ -90,22 +90,23 @@ exports.signup = async (req, res) => {
 
 exports.signin = async (req, res) => {
   
-  console.log(req.body);
+  console.log("Signin Log Attempt: ", req.body);
   // query database for user
   await User.findOne({
-    username: req.body.username
+    username: req.body.user
   })
   .populate("roles", "-__v")
   .then((user)=>{
     // check to verify the user exists
     if(!user){
+      console.log("Fetched User: ", user);
       return res.status(404).send({ message: "Signin Error :: User Not Found!"});
     }
     
-    console.log(`Comparing Stored HASH : ${user.password} == ${req.body.password} using bcrypt`);
+    console.log(`Comparing Stored HASH : ${user.password} == ${req.body.pass} using bcrypt`);
     // validate the submitted password
     let validPass = bcrypt.compareSync(  
-      req.body.password,
+      req.body.pass,
       user.password
     );
 
@@ -139,7 +140,7 @@ exports.signin = async (req, res) => {
     */ 
 
     // The Make tiktok stream happy way :) // The Clean Way
-    const positions = user.roles.map(role => `ROLE_${role.name}.toUpperCase()`);
+    const positions = user.roles.map(role => `ROLE_${role.name}`.toUpperCase());
 
     // on creation of objects and positions array send response
     res.status(200).send({

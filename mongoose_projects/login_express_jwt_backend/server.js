@@ -36,7 +36,7 @@ db.mongoose.connect( mongo.URI,{
 ////////* App Settings *//////////////
 
 const corOptions = {
-    origin: "http://localhost:8001"
+    origin: "http://localhost:3000"
 };
 
 // set cores options
